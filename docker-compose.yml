@@ -1,0 +1,29 @@
+version: '3.3'
+services:
+  api:
+    container_name: go
+    build:
+      context: .
+      dockerfile: ./docker/api/Dockerfile
+    depends_on:
+      # dbserverが起動してから、appを起動
+      - mysql
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./src/api:/go/src/api
+  mysql:
+    container_name: db
+    build: ./docker/db
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_USER: root
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: sample
+    hostname: mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./docker/db/conf.d:/etc/mysql/conf.d
+      - ./log/mysql:/var/log/mysql
