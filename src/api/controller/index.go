@@ -3,7 +3,7 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/sclevine/agouti"
-	"log"
+	// "log"
 )
 
 func IndexDisplayAction(c *gin.Context) {
@@ -14,6 +14,9 @@ func chrome() *agouti.Page {
 	agoutiDriver := agouti.ChromeDriver(
 		agouti.ChromeOptions("args", []string{
 			"--headless", // headlessモードの指定 サイト読み込み時の起動をなくす
+			"--no-sandbox", 
+			"--disable-gpu", // アクセラレーションの排除　ちらつき解消
+            "--disable-dev-shm-usage", //chromeが破損しないようDockerのメモリスペースを大きいものに変更
 		}),
 	)
 	agoutiDriver.Start()
@@ -37,7 +40,6 @@ func AnytimeDisplayAction(c *gin.Context) {
 		
 		y := []string{}
 		y = append(y, title,info)
-		log.Println(1)
 		
 		test <- y
 	}()
@@ -53,7 +55,6 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		y := []string{}
 		y = append(y, title,info)
-		log.Println(1)
 
 		test <- y
 	}()
@@ -69,7 +70,6 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		y := []string{}
 		y = append(y, title,info)
-		log.Println(1)
 
 		test <- y
 	}()
@@ -86,7 +86,6 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		y := []string{}
 		y = append(y, title,info)
-		log.Println(1)
 
 		test <- y
 	}()
@@ -102,7 +101,6 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		y := []string{}
 		y = append(y, title,info)
-		log.Println(1)
 
 		test <- y
 	}()
