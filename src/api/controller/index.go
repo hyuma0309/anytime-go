@@ -27,110 +27,115 @@ func chrome() *agouti.Page {
 }
 type anytime struct {
   Title string
-  Info string
+  Price string
   Url *url.URL
 }
 
-func NewAnytime(title string, info string, url *url.URL) anytime {
-    return anytime{Title: title, Info: info, Url: url}
+func NewAnytime(title string, price string, url *url.URL) anytime {
+    return anytime{Title: title, Price: price, Url: url}
 }
 
 func AnytimeDisplayAction(c *gin.Context) {
-
-
 	var messages []interface{}
-	test := make(chan []interface{})
+	ch := make(chan []interface{})
 
 	go func(){
 		page := chrome()
+		link := "https://www.anytimefitness.co.jp/rokucho/"
 
 		// 六町店
-		page.Navigate("https://www.anytimefitness.co.jp/rokucho/")
+		page.Navigate(link)
 		title, _ := page.Title()
-		info, _ := page.FindByClass("price").Text()
-		url, _ := url.Parse("https://www.anytimefitness.co.jp/rokucho/")
+		priceClass, _ := page.FindByClass("price").Text()
+		price := string([]rune(priceClass)[:23])
+		url, _ := url.Parse(link)
+
 		
 		var y []interface{}
-		y = append(y, NewAnytime(title,info,url))
+		y = append(y, NewAnytime(title,price,url))
 
 		log.Println(y)
-		test <- y
+		ch <- y
 	}()
 
 	go func() {
 		page := chrome()
+		link := "https://www.anytimefitness.co.jp/n-shibamata/"
 
 		// 新柴又店
-		page.Navigate("https://www.anytimefitness.co.jp/n-shibamata/")
+		page.Navigate(link)
 
 		title, _ := page.Title()
-		info, _ := page.FindByID("info-box").Text()
-		url, _ := url.Parse("https://www.anytimefitness.co.jp/n-shibamata/")
+		priceClass, _ := page.FindByClass("price").Text()
+		price := string([]rune(priceClass)[:23])
+		url, _ := url.Parse(link)
 		
 		var y []interface{}
-		y = append(y, NewAnytime(title,info,url))
+		y = append(y, NewAnytime(title,price,url))
 
-		log.Println(y)
-		test <- y
+		ch <- y
 	}()
 
 	go func() {
 		page := chrome()
+		link := "https://www.anytimefitness.co.jp/akebonobashi/"
 
 		// 曙橋駅店
-		page.Navigate("https://www.anytimefitness.co.jp/akebonobashi/")
+		page.Navigate(link)
 
 		title, _ := page.Title()
-		info, _ := page.FindByID("info-box").Text()
-		url, _ := url.Parse("https://www.anytimefitness.co.jp/akebonobashi/")
+		priceClass, _ := page.FindByClass("price").Text()
+		price := string([]rune(priceClass)[:23])
+		url, _ := url.Parse(link)
 		
 		var y []interface{}
-		y = append(y, NewAnytime(title,info,url))
+		y = append(y, NewAnytime(title,price,url))
 
-		log.Println(y)
-		test <- y
+		ch <- y
 	}()
 
 
 	go func() {
 		page := chrome()
+		link := "https://www.anytimefitness.co.jp/shinnakano/"
 
 		// 新中野店
-		page.Navigate("https://www.anytimefitness.co.jp/shinnakano/")
+		page.Navigate(link)
 
 		title, _ := page.Title()
-		info, _ := page.FindByID("info-box").Text()
-		url, _ := url.Parse("https://www.anytimefitness.co.jp/shinnakano/")
+		priceClass, _ := page.FindByClass("price").Text()
+		price := string([]rune(priceClass)[:23])
+		url, _ := url.Parse(link)
 		
 		var y []interface{}
-		y = append(y, NewAnytime(title,info,url))
+		y = append(y, NewAnytime(title,price,url))
 
-		log.Println(y)
-		test <- y
+		ch <- y
 	}()
 
 	go func() {
 		page := chrome()
+		link := "https://www.anytimefitness.co.jp/ochiai/"
 
 		// 落合店
-		page.Navigate("https://www.anytimefitness.co.jp/ochiai/")
+		page.Navigate(link)
 
 		title, _ := page.Title()
-		info, _ := page.FindByID("info-box").Text()
-		url, _ := url.Parse("https://www.anytimefitness.co.jp/ochiai/")
+		priceClass, _ := page.FindByClass("price").Text()
+		price := string([]rune(priceClass)[:23])
+		url, _ := url.Parse(link)
 		
 		var y []interface{}
-		y = append(y, NewAnytime(title,info,url))
+		y = append(y, NewAnytime(title,price,url))
 
-		log.Println(y)
-		test <- y
+		ch <- y
 	}()
 
-	messages = append(messages, <-test...)
-	messages = append(messages, <-test...)
-	messages = append(messages, <-test...)
-	messages = append(messages, <-test...)
-	messages = append(messages, <-test...)
+	messages = append(messages, <-ch...)
+	messages = append(messages, <-ch...)
+	messages = append(messages, <-ch...)
+	messages = append(messages, <-ch...)
+	messages = append(messages, <-ch...)
 
 	c.HTML(200, "anytime.html", gin.H{
 		"message": "エニタイム",
