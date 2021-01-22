@@ -5,9 +5,16 @@
     <title>エニタイム</title>
 </head>
 <body>
-    <p>{{.message}}</p>
+    <table border="5">
+        <tr>
+    <h1>{{.message}}</h1>
+    <th>
     {{range .titles}}
-      <p>{{.}}</p>
+      <a href="{{.Url}}"><p>{{.Title}}</p></a>
+      <p>{{.Info}}</p>
      {{end}}
+    </th>
+    </tr>
+    </table>
 </body>
 </html>

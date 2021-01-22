@@ -3,7 +3,8 @@ package controller
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/sclevine/agouti"
-	// "log"
+	"log"
+	"net/url"
 )
 
 func IndexDisplayAction(c *gin.Context) {
@@ -24,11 +25,21 @@ func chrome() *agouti.Page {
 	page, _ := agoutiDriver.NewPage()
 	return page
 }
+type anytime struct {
+  Title string
+  Info string
+  Url *url.URL
+}
+
+func NewAnytime(title string, info string, url *url.URL) anytime {
+    return anytime{Title: title, Info: info, Url: url}
+}
 
 func AnytimeDisplayAction(c *gin.Context) {
 
-	messages := []string{}
-    test := make(chan []string)
+
+	var messages []interface{}
+	test := make(chan []interface{})
 
 	go func(){
 		page := chrome()
@@ -36,11 +47,13 @@ func AnytimeDisplayAction(c *gin.Context) {
 		// 六町店
 		page.Navigate("https://www.anytimefitness.co.jp/rokucho/")
 		title, _ := page.Title()
-		info, _ := page.FindByID("info-box").Text()
+		info, _ := page.FindByClass("price").Text()
+		url, _ := url.Parse("https://www.anytimefitness.co.jp/rokucho/")
 		
-		y := []string{}
-		y = append(y, title,info)
-		
+		var y []interface{}
+		y = append(y, NewAnytime(title,info,url))
+
+		log.Println(y)
 		test <- y
 	}()
 
@@ -52,10 +65,12 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		title, _ := page.Title()
 		info, _ := page.FindByID("info-box").Text()
+		url, _ := url.Parse("https://www.anytimefitness.co.jp/n-shibamata/")
+		
+		var y []interface{}
+		y = append(y, NewAnytime(title,info,url))
 
-		y := []string{}
-		y = append(y, title,info)
-
+		log.Println(y)
 		test <- y
 	}()
 
@@ -67,10 +82,12 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		title, _ := page.Title()
 		info, _ := page.FindByID("info-box").Text()
+		url, _ := url.Parse("https://www.anytimefitness.co.jp/akebonobashi/")
+		
+		var y []interface{}
+		y = append(y, NewAnytime(title,info,url))
 
-		y := []string{}
-		y = append(y, title,info)
-
+		log.Println(y)
 		test <- y
 	}()
 
@@ -83,10 +100,12 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		title, _ := page.Title()
 		info, _ := page.FindByID("info-box").Text()
+		url, _ := url.Parse("https://www.anytimefitness.co.jp/shinnakano/")
+		
+		var y []interface{}
+		y = append(y, NewAnytime(title,info,url))
 
-		y := []string{}
-		y = append(y, title,info)
-
+		log.Println(y)
 		test <- y
 	}()
 
@@ -98,15 +117,17 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		title, _ := page.Title()
 		info, _ := page.FindByID("info-box").Text()
+		url, _ := url.Parse("https://www.anytimefitness.co.jp/ochiai/")
+		
+		var y []interface{}
+		y = append(y, NewAnytime(title,info,url))
 
-		y := []string{}
-		y = append(y, title,info)
-
+		log.Println(y)
 		test <- y
 	}()
 
 	messages = append(messages, <-test...)
-    messages = append(messages, <-test...)
+	messages = append(messages, <-test...)
 	messages = append(messages, <-test...)
 	messages = append(messages, <-test...)
 	messages = append(messages, <-test...)
