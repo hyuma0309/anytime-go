@@ -61,7 +61,6 @@ func NewAnytime(title string, price int, info string, url *url.URL) anytime {
 }
 
 func AnytimeDisplayAction(c *gin.Context) {
-	// var messages []interface{}
 	ch := make(chan []anytime)
 
 	go func() {
@@ -74,12 +73,15 @@ func AnytimeDisplayAction(c *gin.Context) {
 		priceClass, _ := page.FindByClass("price").Text()
 		priceString := string([]rune(priceClass)[:23])
 
+		// 文字列から数字を抜き出す
 		re := regexp.MustCompile("(..[0-9]+)[^0-9]*$")
 		result := re.FindStringSubmatch(priceString)
 		if result == nil {
 			fmt.Println("数字なし")
 		}
+		// 数字ののコンマを削除
 		result[1] = strings.Replace(result[1], ",", "", 1)
+		// 文字列をint型に変更
 		price, _ := strconv.Atoi(result[1])
 
 		url, _ := url.Parse(link)
