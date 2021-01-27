@@ -2,13 +2,14 @@ package controller
 
 import (
 	"fmt"
-	"github.com/gin-gonic/gin"
-	"github.com/sclevine/agouti"
 	"net/url"
 	"regexp"
 	"sort"
 	"strconv"
 	"strings"
+
+	"github.com/gin-gonic/gin"
+	"github.com/sclevine/agouti"
 )
 
 func IndexDisplayAction(c *gin.Context) {
@@ -30,36 +31,35 @@ func chrome() *agouti.Page {
 	return page
 }
 
+// Anytime is struct
 type Anytime struct {
 	Title string
 	Price int
 	Info  string
-	Url   *url.URL
+	URL   *url.URL
 }
 
+// Lists is []Anytime
 type Lists []Anytime
 
 func (l Lists) Len() int {
-	// Len is the number of elements in the collection.
 	return len(l)
 }
 
 func (l Lists) Less(i, j int) bool {
-	// Less reports whether the element with
-	// index i should sort before the element with index j.
 	return l[i].Price < l[j].Price
-	// return i < j ← これだとうまく動かない
 }
 
 func (l Lists) Swap(i, j int) {
-	// Swap swaps the elements with indexes i and j.
 	l[i], l[j] = l[j], l[i]
 }
 
-func NewAnytime(title string, price int, info string, url *url.URL) Anytime {
-	return Anytime{Title: title, Price: price, Info: info, Url: url}
+// NewAnytime is make Anytime
+func NewAnytime(title string, price int, info string, URL *url.URL) Anytime {
+	return Anytime{Title: title, Price: price, Info: info, URL: URL}
 }
 
+// AnytimeDisplayAction is AnytimeDisplayAction
 func AnytimeDisplayAction(c *gin.Context) {
 	ch := make(chan []Anytime)
 

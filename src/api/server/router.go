@@ -4,8 +4,8 @@ import (
     "github.com/gin-gonic/gin"
     "api/controller"
 )
-
-func GetRouter() *gin.Engine {    // *gin.Engineの表記は返り値の型
+// GetRouter is router
+func GetRouter() *gin.Engine {   
     router := gin.Default()
     router.LoadHTMLGlob("view/*.html")
 
