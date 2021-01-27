@@ -36,7 +36,7 @@ type Anytime struct {
 	Title string
 	Price int
 	Info  string
-	URL   *url.URL
+	Url   *url.URL
 }
 
 // Lists is []Anytime
@@ -55,8 +55,8 @@ func (l Lists) Swap(i, j int) {
 }
 
 // NewAnytime is make Anytime
-func NewAnytime(title string, price int, info string, URL *url.URL) Anytime {
-	return Anytime{Title: title, Price: price, Info: info, URL: URL}
+func NewAnytime(title string, price int, info string, url *url.URL) Anytime {
+	return Anytime{Title: title, Price: price, Info: info, Url: url}
 }
 
 // AnytimeDisplayAction is AnytimeDisplayAction
