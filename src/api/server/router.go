@@ -9,8 +9,7 @@ func GetRouter() *gin.Engine {
     router := gin.Default()
     router.LoadHTMLGlob("view/*.html")
 
-    router.GET("/", controller.IndexDisplayAction)
-    router.GET("/anytime", controller.AnytimeDisplayAction)
+    router.GET("/", controller.AnytimeDisplayAction)
 
     return router
 }

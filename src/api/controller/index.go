@@ -12,10 +12,6 @@ import (
 	"github.com/sclevine/agouti"
 )
 
-func IndexDisplayAction(c *gin.Context) {
-	c.HTML(200, "index.html", gin.H{"message": "hello gin"})
-}
-
 func chrome() *agouti.Page {
 	agoutiDriver := agouti.ChromeDriver(
 		agouti.ChromeOptions("args", []string{
