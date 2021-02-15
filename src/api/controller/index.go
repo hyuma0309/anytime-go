@@ -83,7 +83,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -113,7 +117,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -141,7 +149,12 @@ func AnytimeDisplayAction(c *gin.Context) {
 		price, _ := strconv.Atoi(result[1])
 
 		url, _ := url.Parse(link)
-		info := "キャンペーン情報はありません"
+		info, _ := page.Find("#campaign > div > div > p.fl").Text()
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -170,7 +183,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -199,7 +216,12 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -227,7 +249,12 @@ func AnytimeDisplayAction(c *gin.Context) {
 		price, _ := strconv.Atoi(result[1])
 
 		url, _ := url.Parse(link)
-		info := "キャンペーン情報はありません"
+		info, _ := page.Find("#campaign > div > div > p.fl").Text()
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -257,7 +284,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -286,8 +317,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
-
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
 
@@ -315,7 +349,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -343,7 +381,12 @@ func AnytimeDisplayAction(c *gin.Context) {
 		price, _ := strconv.Atoi(result[1])
 
 		url, _ := url.Parse(link)
-		info := "キャンペーン情報はありません"
+		info, _ := page.Find("#campaign > div > div > p.fl").Text()
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -371,7 +414,12 @@ func AnytimeDisplayAction(c *gin.Context) {
 		price, _ := strconv.Atoi(result[1])
 
 		url, _ := url.Parse(link)
-		info := "キャンペーン情報はありません"
+		info, _ := page.Find("#campaign > div > div > p.fl").Text()
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -400,7 +448,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -429,7 +481,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -448,8 +504,9 @@ func AnytimeDisplayAction(c *gin.Context) {
 		priceClass, _ := page.FindByClass("price").Text()
 		priceString := string([]rune(priceClass)[:23])
 
-		re := regexp.MustCompile("(..[0-9]+)[^0-9]*$")
+		re := regexp.MustCompile("(...[0-9]+)[^0-9]*$")
 		result := re.FindStringSubmatch(priceString)
+		fmt.Println(result[1])
 		if result == nil {
 			fmt.Println("数字なし")
 		}
@@ -458,7 +515,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -487,7 +548,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -516,7 +581,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -545,7 +614,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
@@ -574,7 +647,11 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		url, _ := url.Parse(link)
 		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		info = info[:strings.Index(info, "※")]
+		if info == "" {
+			info = "キャンペーン情報はありません"
+		} else {
+			info = info[:strings.Index(info, "※")]
+		}
 
 		var y []Anytime
 		y = append(y, NewAnytime(title, price, info, url))
