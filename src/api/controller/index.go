@@ -38,6 +38,7 @@ type Anytime struct {
 // Lists is []Anytime
 type Lists []Anytime
 
+// Sort Interface
 func (l Lists) Len() int {
 	return len(l)
 }
