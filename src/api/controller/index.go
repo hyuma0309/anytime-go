@@ -77,7 +77,7 @@ func AnytimeDisplayAction(c *gin.Context) {
 		if result == nil {
 			fmt.Println("数字なし")
 		}
-		// 数字ののコンマを削除
+		// 数字のコンマを削除
 		result[1] = strings.Replace(result[1], ",", "", 1)
 		// 文字列をint型に変更
 		price, _ := strconv.Atoi(result[1])
