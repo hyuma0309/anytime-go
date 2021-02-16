@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>エニタイム</title>
-</head>
-<body>
-    <table border="5">
-        <tr>
-    <h1>{{.message}}</h1>
-    <th>
-    {{range .titles}}
-      <a href="{{.Url}}"><p>{{.Title}}</p></a>
-      <p>24時間年中無休 ¥{{.Price}}(＋税)/月</p>
-      <p>{{.Info}}</p>
-     {{end}}
-    </th>
-    </tr>
+  </head>
+  <body>
+    <table style="margin: auto;" border="5">
+      <tr>
+        <h1 style="text-align: center;">{{.message}}</h1>
+        <p style="text-align: center;">月額費の低い順に表示しています！</p>
+        <br />
+        <th>
+          {{range .titles}}
+          <a href="{{.Url}}"><p>{{.Title}}</p></a>
+          <p>24時間年中無休 ¥{{.Price}}(＋税)/月</p>
+          <p style="width: 70em;">{{.Info}}</p>
+          <br />
+          {{end}}
+        </th>
+      </tr>
     </table>
-</body>
+  </body>
 </html>

@@ -506,7 +506,6 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 		re := regexp.MustCompile("(...[0-9]+)[^0-9]*$")
 		result := re.FindStringSubmatch(priceString)
-		fmt.Println(result[1])
 		if result == nil {
 			fmt.Println("数字なし")
 		}
@@ -682,7 +681,7 @@ func AnytimeDisplayAction(c *gin.Context) {
 	sort.Sort(lists)
 
 	c.HTML(200, "anytime.html", gin.H{
-		"message": "エニタイム",
+		"message": "エニタイム キャンペーン一覧（渋谷区・港区）",
 		"titles":  lists,
 	})
 }
