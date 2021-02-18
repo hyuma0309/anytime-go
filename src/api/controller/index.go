@@ -397,39 +397,6 @@ func AnytimeDisplayAction(c *gin.Context) {
 
 	go func() {
 		page := chrome()
-		link := "https://www.anytimefitness.co.jp/bentencho/"
-
-		// 弁天町店
-		page.Navigate(link)
-
-		title, _ := page.Title()
-		priceClass, _ := page.FindByClass("price").Text()
-		priceString := string([]rune(priceClass)[:23])
-
-		re := regexp.MustCompile("(..[0-9]+)[^0-9]*$")
-		result := re.FindStringSubmatch(priceString)
-		if result == nil {
-			fmt.Println("数字なし")
-		}
-		result[1] = strings.Replace(result[1], ",", "", 1)
-		price, _ := strconv.Atoi(result[1])
-
-		url, _ := url.Parse(link)
-		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		if info == "" {
-			info = "キャンペーン情報はありません"
-		} else {
-			info = info[:strings.Index(info, "※")]
-		}
-
-		var y []Anytime
-		y = append(y, NewAnytime(title, price, info, url))
-
-		ch <- y
-	}()
-
-	go func() {
-		page := chrome()
 		link := "https://www.anytimefitness.co.jp/shibah/"
 
 		// 芝浜松町店
@@ -626,42 +593,7 @@ func AnytimeDisplayAction(c *gin.Context) {
 		ch <- y
 	}()
 
-	go func() {
-		page := chrome()
-		link := "https://www.anytimefitness.co.jp/asashiobashi/"
-
-		// 朝潮橋店
-		page.Navigate(link)
-
-		title, _ := page.Title()
-		priceClass, _ := page.FindByClass("price").Text()
-		priceString := string([]rune(priceClass)[:23])
-
-		re := regexp.MustCompile("(..[0-9]+)[^0-9]*$")
-		result := re.FindStringSubmatch(priceString)
-		if result == nil {
-			fmt.Println("数字なし")
-		}
-		result[1] = strings.Replace(result[1], ",", "", 1)
-		price, _ := strconv.Atoi(result[1])
-
-		url, _ := url.Parse(link)
-		info, _ := page.Find("#campaign > div > div > p.fl").Text()
-		if info == "" {
-			info = "キャンペーン情報はありません"
-		} else {
-			info = info[:strings.Index(info, "※")]
-		}
-
-		var y []Anytime
-		y = append(y, NewAnytime(title, price, info, url))
-
-		ch <- y
-	}()
-
 	lists := Lists{}
-	lists = append(lists, <-ch...)
-	lists = append(lists, <-ch...)
 	lists = append(lists, <-ch...)
 	lists = append(lists, <-ch...)
 	lists = append(lists, <-ch...)
