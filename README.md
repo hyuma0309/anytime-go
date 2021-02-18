@@ -8,6 +8,7 @@
 | Gin     |      |   
 | agouti       |         |        
 | Google Chrome       |             88.0.4324.150 |  
+| nginx       |             nginx/1.19.6 | 
 | docker       |            20.10.2 |  
 
 
@@ -16,7 +17,7 @@ $ cd src/api
 
 $ go run main.go
 
-* URL : http://localhost:8080
+* URL : http://localhost:8000
 
 
 # docker起動方法 
