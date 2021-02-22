@@ -3,6 +3,13 @@
   <head>
     <meta charset="UTF-8" />
     <title>エニタイム</title>
+    <script>
+      setInterval(function () {
+        // 毎日00時00分00秒に再リロード
+        var newDate = new Date();
+        newDate.getTime() || newDate.getMinutes() || newDate.getHours() || location.reload();
+      }, 1000);
+    </script>
   </head>
   <body>
     <table style="margin: auto" border="5">
