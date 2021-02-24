@@ -9,3 +9,10 @@ services:
       - "8080:8080"
     volumes:
       - ./src/api:/go/src/api
+
+  reverse-proxy:
+    image: nginx
+    volumes:
+      - ./docker/nginx/default.conf:/etc/nginx/nginx.conf
+    ports:
+      - "7000:7000"
