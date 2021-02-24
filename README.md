@@ -17,7 +17,7 @@ $ cd src/api
 
 $ go run main.go
 
-* URL : http://localhost:8000
+* URL : http://localhost:8080
 
 
 # docker起動方法 
@@ -27,7 +27,7 @@ $ docker-compose build
 
 $ docker-compose up 
 
-* URL : http://localhost:8080
+* URL : http://localhost:7000
 
 
 
