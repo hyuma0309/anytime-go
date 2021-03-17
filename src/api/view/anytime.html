@@ -4,10 +4,15 @@
     <meta charset="UTF-8" />
     <title>エニタイム</title>
     <script>
-      setInterval(function () {
-        // 毎日00時00分00秒に再リロード
-        var newDate = new Date();
-        newDate.getTime() || newDate.getMinutes() || newDate.getHours() || location.reload();
+      // 毎日03時00分00秒に再リロード
+      window.setInterval(function () {
+        const date = new Date();
+        console.log(date.getHours())
+        console.log(date.getMinutes())
+        if (date.getHours() === 3 && date.getMinutes() === 0 && date.getSeconds() === 0) {
+          location.reload();
+          console.log("実行されました");
+        }
       }, 1000);
     </script>
   </head>
